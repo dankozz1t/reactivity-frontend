@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Instructor Notes: Advanced Frontend Reactivity</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: #f8f9fa;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      h1 {
+        color: #2c3e50;
+        text-align: center;
+        margin-bottom: 30px;
+        padding-bottom: 15px;
+        border-bottom: 3px solid #3498db;
+      }
+
+      h2 {
+        color: #3498db;
+        margin: 25px 0 15px 0;
+        padding-left: 10px;
+        border-left: 4px solid #3498db;
+      }
+
+      h3 {
+        color: #e67e22;
+        margin: 20px 0 10px 0;
+      }
+
+      h4 {
+        color: #27ae60;
+        margin: 15px 0 8px 0;
+      }
+
+      .slide-section {
+        background: #f8f9fa;
+        border-radius: 8px;
+        padding: 20px;
+        margin: 20px 0;
+        border-left: 5px solid #3498db;
+      }
+
+      .timing {
+        background: #e8f4fd;
+        padding: 8px 12px;
+        border-radius: 5px;
+        display: inline-block;
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: #2980b9;
+      }
+
+      .key-points {
+        background: #fff3cd;
+        border: 1px solid #ffeaa7;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 10px 0;
+      }
+
+      .teaching-tip {
+        background: #d4edda;
+        border: 1px solid #c3e6cb;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 10px 0;
+      }
+
+      .demo-suggestion {
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+        border-radius: 5px;
+        padding: 15px;
+        margin: 10px 0;
+      }
+
+      .code-note {
+        background: #e2e3e5;
+        border-radius: 5px;
+        padding: 10px;
+        font-family: monospace;
+        margin: 10px 0;
+      }
+
+      ul,
+      ol {
+        margin-left: 20px;
+        margin-bottom: 15px;
+      }
+
+      .framework {
+        display: inline-block;
+        padding: 4px 8px;
+        border-radius: 3px;
+        color: white;
+        font-weight: bold;
+        margin: 2px;
+      }
+
+      .vue {
+        background: #4fc08d;
+      }
+      .react {
+        background: #61dafb;
+        color: #333;
+      }
+      .angular {
+        background: #dd0031;
+      }
+      .svelte {
+        background: #ff3e00;
+      }
+
+      .warning {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 10px;
+        margin: 10px 0;
+      }
+
+      .overview {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px;
+        border-radius: 10px;
+        margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎓 Instructor Notes: Advanced Frontend Reactivity 2025</h1>
+
+      <div class="overview">
+        <h2 style="color: white; border: none; margin: 0">
+          📋 Загальний Огляд
+        </h2>
+        <p><strong>Тривалість:</strong> 90-120 хвилин</p>
+        <p><strong>Аудиторія:</strong> Middle/Senior Frontend developers</p>
+        <p>
+          <strong>Мета:</strong> Глибоке розуміння реактивності у сучасних
+          фреймворках з фокусом на Vue ecosystem
+        </p>
+        <p>
+          <strong>Формат:</strong> Інтерактивна лекція з live coding та демо
+        </p>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 5 хвилин</div>
+        <h2>Слайд 1: Title & Introduction</h2>
+
+        <div class="key-points">
+          <h4>🎯 Ключові точки:</h4>
+          <ul>
+            <li>Представити актуальність теми у 2025 році</li>
+            <li>Підкреслити фокус на Vue ecosystem</li>
+            <li>Пояснити чому саме ці фреймворки обрані</li>
+            <li>
+              Нагадати про еволюцію від jQuery до сучасних реактивних систем
+            </li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Teaching Tips:</h4>
+          <ul>
+            <li>
+              Почніть з питання: "Хто використовує кожен з цих фреймворків?"
+            </li>
+            <li>
+              Створіть контекст: "Реактивність - це основа сучасного web
+              розвитку"
+            </li>
+            <li>
+              Згадайте що у 2025 всі фреймворки рухаються до Signals-based
+              reactivity
+            </li>
+            <li>
+              Поясніть що Vue Vapor Mode та React Compiler змінюють правила гри
+            </li>
+          </ul>
+        </div>
+
+        <div class="demo-suggestion">
+          <h4>🔴 Live Demo Ідеї:</h4>
+          <ul>
+            <li>Покажіть простий reactive приклад в браузері консолі</li>
+            <li>
+              Продемонструйте різницю між imperative та declarative підходами
+            </li>
+            <li>Запустіть простий Vue 3 приклад у CodePen</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 10 хвилин</div>
+        <h2>Слайд 2: Reactivity Fundamentals</h2>
+
+        <div class="key-points">
+          <h4>🎯 Ключові концепції для пояснення:</h4>
+          <ul>
+            <li>
+              <strong>Dependency Tracking</strong> - як системи відстежують
+              залежності (WeakMap, Set)
+            </li>
+            <li>
+              <strong>Change Detection</strong> - різні стратегії виявлення змін
+            </li>
+            <li>
+              <strong>Schedulers</strong> - чому важливо планувати оновлення
+              (microtasks, RAF)
+            </li>
+            <li>
+              <strong>Fine-grained vs Coarse-grained</strong> - що це означає
+              практично
+            </li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Методичні поради:</h4>
+          <ul>
+            <li>
+              Використайте аналогію з Excel - коли ви змінюєте A1, всі формули
+              що залежать від A1 оновлюються автоматично
+            </li>
+            <li>
+              Поясніть різницю між Push (Vue/Angular) та Pull (React) підходами
+              простими словами
+            </li>
+            <li>Наголосіть що Svelte робить це на compile-time (найшвидше)</li>
+            <li>Покажіть як выглядає dependency graph візуально</li>
+          </ul>
+        </div>
+
+        <div class="demo-suggestion">
+          <h4>🔴 Інтерактивна демонстрація:</h4>
+          <ul>
+            <li>Створіть просту reactive систему в реальному часі</li>
+            <li>Покажіть console.log dependency tracking</li>
+            <li>Продемонструйте batching updates</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 12 хвилин</div>
+        <h2>Слайд 3: Vue 2 vs Vue 3 Architecture</h2>
+
+        <div class="key-points">
+          <h4>🎯 Критичні відмінності:</h4>
+          <ul>
+            <li>
+              <strong>Object.defineProperty обмеження:</strong> не може
+              відстежувати нові властивості
+            </li>
+            <li>
+              <strong>Proxy переваги:</strong> перехоплює всі операції з
+              об'єктами
+            </li>
+            <li>
+              <strong>Performance різниця:</strong> Proxy швидший для великих
+              об'єктів
+            </li>
+            <li><strong>IE11 підтримка:</strong> Vue 2 підтримує, Vue 3 ні</li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Практичні поради:</h4>
+          <ul>
+            <li>
+              Покажіть реальний приклад коли Vue.set() був необхідний у Vue 2
+            </li>
+            <li>
+              Продемонструйте як той самий код працює у Vue 3 без додаткових дій
+            </li>
+            <li>Поясніть чому міграція може бути поступовою</li>
+          </ul>
+        </div>
+
+        <div class="demo-suggestion">
+          <h4>🔴 Live Coding:</h4>
+          <p>
+            Створіть простий компонент який додає властивості динамічно і
+            покажіть різницю у поведінці
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 15 хвилин</div>
+        <h2>Слайд 4: Vue 3 Reactivity Deep Dive</h2>
+
+        <div class="key-points">
+          <h4>🎯 Глибокі концепції:</h4>
+          <ul>
+            <li>
+              <strong>targetMap</strong> - WeakMap для зберігання залежностей
+            </li>
+            <li>
+              <strong>activeEffect</strong> - поточний ефект що виконується
+            </li>
+            <li><strong>effect</strong> - обгортка для реактивних функцій</li>
+            <li><strong>ref vs reactive</strong> - коли що використовувати</li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Складні моменти:</h4>
+          <ul>
+            <li>Поясніть чому WeakMap - це важливо (garbage collection)</li>
+            <li>Покажіть як activeEffect пов'язує читання з ефектами</li>
+            <li>Наголосіть на toRefs() як рішенні проблеми деструктуризації</li>
+          </ul>
+        </div>
+
+        <div class="warning">
+          <strong>⚠️ Увага:</strong> Студенти часто плутають ref.value з
+          reactive властивостями. Витратьте час на це пояснення.
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 10 хвилин</div>
+        <h2>Слайд 5: Vue Vapor Mode</h2>
+
+        <div class="key-points">
+          <h4>🎯 Революційні зміни:</h4>
+          <ul>
+            <li><strong>No Virtual DOM:</strong> прямі DOM маніпуляції</li>
+            <li>
+              <strong>Compile-time optimization:</strong> максимум на build
+              етапі
+            </li>
+            <li>
+              <strong>Backward compatibility:</strong> можна міксувати з
+              звичайними компонентами
+            </li>
+            <li><strong>Bundle size:</strong> 50%+ зменшення розміру</li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Важливо пояснити:</h4>
+          <ul>
+            <li>Vapor Mode - це не заміна Vue 3, а додаткова опція</li>
+            <li>Схожий підхід використовує Svelte, але Vue робить це opt-in</li>
+            <li>Ідеально для performance-critical компонентів</li>
+          </ul>
+        </div>
+
+        <div class="demo-suggestion">
+          <h4>🔴 Демо ідея:</h4>
+          <p>
+            Покажіть bundle analyzer для звичайного Vue компонента vs Vapor mode
+            компонента
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 8 хвилин</div>
+        <h2>Слайд 6: Composition API vs Options API</h2>
+
+        <div class="teaching-tip">
+          <h4>💡 Стратегія викладання:</h4>
+          <ul>
+            <li>Почніть з того що Options API не застарів і досі валідний</li>
+            <li>Покажіть як той самий функціонал виглядає в обох підходах</li>
+            <li>
+              Наголосіть на перевагах TypeScript підтримки в Composition API
+            </li>
+          </ul>
+        </div>
+
+        <div class="key-points">
+          <h4>🎯 Переваги Composition API:</h4>
+          <ul>
+            <li>Логічна композиція - пов'язана логіка разом</li>
+            <li>Реюзабельність через composables</li>
+            <li>Tree-shaking - неиспользованый код видаляється</li>
+            <li>Кращий TypeScript інференс</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 12 хвилин</div>
+        <h2>Слайд 7: Vue Composables</h2>
+
+        <div class="key-points">
+          <h4>🎯 Patterns для демонстрації:</h4>
+          <ul>
+            <li><strong>useCounter:</strong> простий state management</li>
+            <li><strong>useApi:</strong> асинхронна логіка</li>
+            <li><strong>useMouse:</strong> DOM events</li>
+            <li><strong>useLocalStorage:</strong> browser APIs</li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Практичні поради:</h4>
+          <ul>
+            <li>Покажіть як composables замінюють mixins</li>
+            <li>Пояснення readonly() для захисту internal state</li>
+            <li>
+              Демонструйте composable composition (композиція композаблів)
+            </li>
+          </ul>
+        </div>
+
+        <div class="demo-suggestion">
+          <h4>🔴 Live Coding:</h4>
+          <p>
+            Створіть composable useDebounce і покажіть як його використовувати в
+            компоненті
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 10 хвилин</div>
+        <h2>Слайд 8-9: Nuxt 2 vs Nuxt 3</h2>
+
+        <div class="key-points">
+          <h4>🎯 Архітектурні зміни:</h4>
+          <ul>
+            <li><strong>Nitro Engine:</strong> замість Node.js</li>
+            <li>
+              <strong>Auto-imports:</strong> не потрібно імпортувати Vue функції
+            </li>
+            <li>
+              <strong>Universal reactivity:</strong> один код на сервері та
+              клієнті
+            </li>
+            <li>
+              <strong>Islands architecture:</strong> селективна гідратація
+            </li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Фокус на практичності:</h4>
+          <ul>
+            <li>Покажіть як useFetch автоматично керує loading states</li>
+            <li>Поясніть useState для shared state між сервером і клієнтом</li>
+            <li>Демонструйте auto-imports на практиці</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 8 хвилин</div>
+        <h2>Слайд 10: React 19+ Advanced Reactivity</h2>
+
+        <div class="key-points">
+          <h4>🎯 Нові можливості:</h4>
+          <ul>
+            <li><strong>React Compiler:</strong> автоматична мемоізація</li>
+            <li><strong>use() Hook:</strong> async у компонентах</li>
+            <li><strong>Server Components:</strong> серверна реактивність</li>
+            <li><strong>Concurrent Features:</strong> time slicing</li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Порівняння з Vue:</h4>
+          <ul>
+            <li>React Compiler vs Vue's автоматична реактивність</li>
+            <li>Server Components vs Nuxt server-side composables</li>
+            <li>Підкресліть різні філософії фреймворків</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 8 хвилин</div>
+        <h2>Слайд 11: Angular Signals</h2>
+
+        <div class="key-points">
+          <h4>🎯 Революційні зміни:</h4>
+          <ul>
+            <li><strong>Signals стандарт:</strong> заміна Zone.js</li>
+            <li><strong>Fine-grained reactivity:</strong> точкові оновлення</li>
+            <li><strong>Control Flow:</strong> @if, @for замість директив</li>
+            <li><strong>Interoperability:</strong> з існуючим кодом</li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Контекст:</h4>
+          <ul>
+            <li>Angular нарешті отримав fine-grained reactivity як у Vue</li>
+            <li>Signals дозволяють позбутися Zone.js overhead</li>
+            <li>Схожий API з SolidJS та Vue computed</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 8 хвилин</div>
+        <h2>Слайд 12: Svelte 5 Runes</h2>
+
+        <div class="key-points">
+          <h4>🎯 Explicit over magic:</h4>
+          <ul>
+            <li><strong>$state():</strong> замість let змінних</li>
+            <li><strong>$derived():</strong> замість $: statements</li>
+            <li><strong>$effect():</strong> замість $: blocks</li>
+            <li><strong>$props():</strong> explicit props</li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Пояснення переходу:</h4>
+          <ul>
+            <li>Svelte рухається від "магії" до explicit API</li>
+            <li>Краща TypeScript підтримка</li>
+            <li>Схожість з Vue Composition API</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 10 хвилин</div>
+        <h2>Слайд 13: Performance Deep Dive</h2>
+
+        <div class="key-points">
+          <h4>🎯 Актуальні метрики 2025:</h4>
+          <ul>
+            <li>
+              <strong>Bundle sizes:</strong> Svelte < Vue < React < Angular
+            </li>
+            <li><strong>Runtime performance:</strong> оновлені benchmarks</li>
+            <li><strong>First Paint:</strong> важливий для UX</li>
+            <li><strong>Memory usage:</strong> довгострокові додатки</li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Важливо наголосити:</h4>
+          <ul>
+            <li>Performance залежить від use case</li>
+            <li>Не завжди найшвидший фреймворк = найкращий вибір</li>
+            <li>Developer Experience теж має значення</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 8 хвилин</div>
+        <h2>Слайд 14: Choosing the Right Framework</h2>
+
+        <div class="teaching-tip">
+          <h4>💡 Практичні поради:</h4>
+          <ul>
+            <li>Наголосіть що немає "універсального" рішення</li>
+            <li>Розгляньте реальні use cases з аудиторії</li>
+            <li>Підкресліть важливість команди та досвіду</li>
+          </ul>
+        </div>
+
+        <div class="demo-suggestion">
+          <h4>🔴 Інтерактив:</h4>
+          <p>
+            Попросіть аудиторію поділитися своїм досвідом вибору фреймворків
+          </p>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 7 хвилин</div>
+        <h2>Слайд 15: Future Trends</h2>
+
+        <div class="key-points">
+          <h4>🎯 Тренди 2025-2026:</h4>
+          <ul>
+            <li><strong>Edge-First:</strong> реактивність на CDN edge</li>
+            <li><strong>AI Integration:</strong> автоматичні оптимізації</li>
+            <li><strong>Zero-Bundle:</strong> compile-time everything</li>
+            <li>
+              <strong>Universal Reactivity:</strong> cross-platform системи
+            </li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Завершення:</h4>
+          <ul>
+            <li>
+              Підкресліть що Vue екосистема в найкращому стані для майбутнього
+            </li>
+            <li>Signals стали universal pattern</li>
+            <li>Важливість continuous learning в нашій сфері</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="slide-section">
+        <div class="timing">⏱ 5 хвилин</div>
+        <h2>Слайд 16: Conclusions</h2>
+
+        <div class="key-points">
+          <h4>🎯 Ключові takeaways:</h4>
+          <ul>
+            <li>Реактивність еволюціонує до compile-time оптимізацій</li>
+            <li>Vue екосистема пропонує найкращий баланс</li>
+            <li>Signals стають стандартом індустрії</li>
+            <li>Performance важливий, але не єдиний критерій</li>
+          </ul>
+        </div>
+
+        <div class="teaching-tip">
+          <h4>💡 Q&A підготовка:</h4>
+          <ul>
+            <li>Готуйтеся до питань про міграцію між фреймворками</li>
+            <li>Можливі питання про enterprise рішення</li>
+            <li>Підготуйте ресурси для подальшого навчання</li>
+          </ul>
+        </div>
+      </div>
+
+      <h2>📚 Додаткові ресурси для підготовки</h2>
+
+      <div class="key-points">
+        <h4>🔗 Обов'язкові ресурси:</h4>
+        <ul>
+          <li>
+            <a
+              href="https://vuejs.org/guide/essentials/reactivity-fundamentals.html"
+              >Vue 3 Reactivity Guide</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://github.com/vuejs/core/tree/main/packages/reactivity"
+              >Vue 3 Reactivity Source Code</a
+            >
+          </li>
+          <li>
+            <a href="https://nuxt.com/docs/getting-started/introduction"
+              >Nuxt 3 Documentation</a
+            >
+          </li>
+          <li>
+            <a href="https://react.dev/blog/2024/04/25/react-19"
+              >React 19 Release Notes</a
+            >
+          </li>
+          <li>
+            <a href="https://angular.io/guide/signals">Angular Signals Guide</a>
+          </li>
+          <li>
+            <a href="https://svelte-5-preview.vercel.app/docs/runes"
+              >Svelte 5 Runes Documentation</a
+            >
+          </li>
+        </ul>
+      </div>
+
+      <h2>⚡ Tips для успішної презентації</h2>
+
+      <div class="teaching-tip">
+        <h4>💡 Загальні поради:</h4>
+        <ul>
+          <li>
+            <strong>Готуйте код заздалегідь:</strong> всі demo мають працювати
+          </li>
+          <li>
+            <strong>Використовуйте реальні приклади:</strong> не абстрактні
+            foo/bar
+          </li>
+          <li>
+            <strong>Запитуйте у аудиторії:</strong> "Хто стикався з цією
+            проблемою?"
+          </li>
+          <li>
+            <strong>Будьте готові до глибоких питань:</strong> знайте internals
+          </li>
+          <li><strong>Підготуйте fallback:</strong> якщо demo не працює</li>
+        </ul>
+      </div>
+
+      <div class="warning">
+        <strong>⚠️ Важливо:</strong> Не намагайтеся охопити все за одну лекцію.
+        Краще глибоко розібрати основні концепції ніж поверхнево торкнутися
+        всього.
+      </div>
+    </div>
+  </body>
+</html>

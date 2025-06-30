@@ -1,0 +1,491 @@
+<!DOCTYPE html>
+<html lang="uk">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Advanced Frontend Reactivity 2025 - Vue Ecosystem Focus</title>
+    <meta
+      name="description"
+      content="Інтерактивна презентація про реактивність у сучасних JavaScript фреймворках з фокусом на Vue ecosystem"
+    />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        min-height: 100vh;
+        overflow-x: hidden;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
+
+      .hero {
+        text-align: center;
+        margin-bottom: 60px;
+        animation: fadeInUp 1s ease-out;
+      }
+
+      .hero h1 {
+        font-size: 3.5em;
+        margin-bottom: 20px;
+        background: linear-gradient(45deg, #00f2fe, #4facfe);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      }
+
+      .hero .subtitle {
+        font-size: 1.4em;
+        margin-bottom: 15px;
+        opacity: 0.9;
+      }
+
+      .hero .description {
+        font-size: 1.1em;
+        opacity: 0.8;
+        max-width: 800px;
+        margin: 0 auto;
+        line-height: 1.6;
+      }
+
+      .features {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+        margin: 60px 0;
+      }
+
+      .feature-card {
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(20px);
+        border-radius: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 30px;
+        text-align: center;
+        transition: all 0.3s ease;
+        animation: fadeInUp 1s ease-out;
+        animation-delay: 0.2s;
+        animation-fill-mode: both;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.15);
+      }
+
+      .feature-icon {
+        font-size: 3em;
+        margin-bottom: 20px;
+        display: block;
+      }
+
+      .feature-card h3 {
+        font-size: 1.5em;
+        margin-bottom: 15px;
+        color: #00f2fe;
+      }
+
+      .navigation {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 25px;
+        margin: 50px 0;
+      }
+
+      .nav-card {
+        background: rgba(255, 255, 255, 0.12);
+        backdrop-filter: blur(20px);
+        border-radius: 15px;
+        border: 1px solid rgba(255, 255, 255, 0.25);
+        padding: 25px;
+        transition: all 0.3s ease;
+        animation: slideInUp 0.8s ease-out;
+        animation-delay: 0.4s;
+        animation-fill-mode: both;
+      }
+
+      .nav-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+        background: rgba(255, 255, 255, 0.18);
+      }
+
+      .nav-card h4 {
+        font-size: 1.3em;
+        margin-bottom: 10px;
+        color: #4facfe;
+      }
+
+      .nav-card p {
+        opacity: 0.9;
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+
+      .nav-button {
+        display: inline-block;
+        background: linear-gradient(45deg, #00f2fe, #4facfe);
+        color: white;
+        text-decoration: none;
+        padding: 12px 25px;
+        border-radius: 25px;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(0, 242, 254, 0.3);
+      }
+
+      .nav-button:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 20px rgba(0, 242, 254, 0.4);
+        text-decoration: none;
+        color: white;
+      }
+
+      .nav-button.secondary {
+        background: linear-gradient(45deg, #667eea, #764ba2);
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+      }
+
+      .nav-button.secondary:hover {
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+      }
+
+      .tech-stack {
+        background: rgba(255, 255, 255, 0.08);
+        border-radius: 15px;
+        padding: 30px;
+        margin: 40px 0;
+        text-align: center;
+        animation: fadeIn 1s ease-out;
+        animation-delay: 0.6s;
+        animation-fill-mode: both;
+      }
+
+      .tech-stack h3 {
+        margin-bottom: 20px;
+        color: #87ceeb;
+      }
+
+      .tech-badges {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 15px;
+      }
+
+      .tech-badge {
+        background: rgba(255, 255, 255, 0.15);
+        padding: 8px 16px;
+        border-radius: 20px;
+        font-size: 0.9em;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        margin: 40px 0;
+      }
+
+      .stat-item {
+        text-align: center;
+        animation: bounceIn 1s ease-out;
+        animation-delay: 0.8s;
+        animation-fill-mode: both;
+      }
+
+      .stat-number {
+        font-size: 2.5em;
+        font-weight: bold;
+        color: #00f2fe;
+        display: block;
+      }
+
+      .stat-label {
+        opacity: 0.8;
+        font-size: 0.9em;
+      }
+
+      .footer {
+        text-align: center;
+        margin-top: 60px;
+        padding-top: 40px;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+        opacity: 0.7;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      @keyframes bounceIn {
+        0% {
+          opacity: 0;
+          transform: scale(0.3);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+        70% {
+          transform: scale(0.9);
+        }
+        100% {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      @media (max-width: 768px) {
+        .hero h1 {
+          font-size: 2.5em;
+        }
+
+        .hero .subtitle {
+          font-size: 1.2em;
+        }
+
+        .container {
+          padding: 20px 15px;
+        }
+
+        .features {
+          grid-template-columns: 1fr;
+        }
+
+        .navigation {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="hero">
+        <h1>Advanced Frontend Reactivity</h1>
+        <div class="subtitle">
+          Глибокий аналіз реактивності у сучасних JavaScript фреймворках 2025
+        </div>
+        <div class="description">
+          Інтерактивна презентація з фокусом на Vue ecosystem, що охоплює Vue
+          Vapor Mode, React 19 Compiler, Angular Signals та Svelte 5 Runes з
+          практичними прикладами та live coding
+        </div>
+      </div>
+
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-number">16</span>
+          <div class="stat-label">Слайдів</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">90+</span>
+          <div class="stat-label">Хвилин контенту</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">5</span>
+          <div class="stat-label">Фреймворків</div>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">2025</span>
+          <div class="stat-label">Актуальні тренди</div>
+        </div>
+      </div>
+
+      <div class="navigation">
+        <div class="nav-card">
+          <h4>🎯 Основна Презентація</h4>
+          <p>
+            Інтерактивна презентація з 16 слайдами про реактивність у Vue,
+            React, Angular та Svelte з live demo та актуальними метриками 2025
+          </p>
+          <a href="reactivity-advanced.html" class="nav-button"
+            >Відкрити Презентацію</a
+          >
+        </div>
+
+        <div class="nav-card">
+          <h4>🎓 Instructor Notes</h4>
+          <p>
+            Детальний гід для викладачів з timing, teaching tips, demo ідеями та
+            підготовкою до Q&A сесії
+          </p>
+          <a
+            href="instructor-notes-reactivity.html"
+            class="nav-button secondary"
+            >Переглянути Notes</a
+          >
+        </div>
+
+        <div class="nav-card">
+          <h4>📚 Документація</h4>
+          <p>
+            Повний опис проекту, структура презентації, інструкції з
+            використання та ресурси для навчання
+          </p>
+          <a href="README.md" class="nav-button secondary">Читати Docs</a>
+        </div>
+      </div>
+
+      <div class="features">
+        <div class="feature-card">
+          <span class="feature-icon">🖖</span>
+          <h3>Vue Ecosystem Focus</h3>
+          <p>
+            Детальний розбір Vue 3 реактивності, Composition API, Composables та
+            революційного Vue Vapor Mode
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">⚡</span>
+          <h3>2025 Technologies</h3>
+          <p>
+            React Compiler, Angular Signals стандарт, Svelte 5 Runes та
+            edge-first architecture тренди
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">📊</span>
+          <h3>Performance Insights</h3>
+          <p>
+            Актуальні benchmarks, bundle size аналіз та real-world метрики для
+            прийняття рішень
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🔧</span>
+          <h3>Practical Examples</h3>
+          <p>
+            Live coding демо, real-world use cases та практичні patterns для
+            щоденної розробки
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🎯</span>
+          <h3>Decision Matrix</h3>
+          <p>
+            Об'єктивні критерії вибору фреймворку для різних типів проектів та
+            команд
+          </p>
+        </div>
+
+        <div class="feature-card">
+          <span class="feature-icon">🔮</span>
+          <h3>Future Trends</h3>
+          <p>
+            Edge computing, AI integration, compile-time optimization та що
+            чекає frontend у 2025-2026
+          </p>
+        </div>
+      </div>
+
+      <div class="tech-stack">
+        <h3>🛠 Технології та Coverage</h3>
+        <div class="tech-badges">
+          <span class="tech-badge">Vue 3.5 + Vapor Mode</span>
+          <span class="tech-badge">React 19 + Compiler</span>
+          <span class="tech-badge">Angular 18 + Signals</span>
+          <span class="tech-badge">Svelte 5 + Runes</span>
+          <span class="tech-badge">Nuxt 3/4</span>
+          <span class="tech-badge">TypeScript</span>
+          <span class="tech-badge">Performance Benchmarks</span>
+          <span class="tech-badge">Edge Computing</span>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p>
+          📖 Educational resource для Vue/Frontend community<br />
+          🚀 Готово для deployment та використання у навчанні<br />
+          ⭐ MIT License - використовуйте вільно для лекцій та презентацій
+        </p>
+      </div>
+    </div>
+
+    <script>
+      // Add some interactive elements
+      document.addEventListener("DOMContentLoaded", function () {
+        // Animate stats on scroll
+        const stats = document.querySelectorAll(".stat-number");
+
+        const animateNumbers = () => {
+          stats.forEach((stat) => {
+            const target = parseInt(stat.textContent);
+            const increment = target / 50;
+            let current = 0;
+
+            const timer = setInterval(() => {
+              current += increment;
+              if (current >= target) {
+                stat.textContent =
+                  target === 2025
+                    ? "2025"
+                    : target + (target === 90 ? "+" : "");
+                clearInterval(timer);
+              } else {
+                stat.textContent =
+                  Math.floor(current) + (target === 90 ? "+" : "");
+              }
+            }, 30);
+          });
+        };
+
+        // Trigger animation after a delay
+        setTimeout(animateNumbers, 1200);
+
+        // Add click tracking for analytics (if needed)
+        document.querySelectorAll(".nav-button").forEach((button) => {
+          button.addEventListener("click", function (e) {
+            console.log("Navigation:", this.href);
+            // Here you can add analytics tracking
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
